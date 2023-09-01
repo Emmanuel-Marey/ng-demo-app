@@ -1,0 +1,97 @@
+<div class="container-fluid">
+	<div class="row">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo">
+					<i class="material-icons" style="padding-left: 20px">cloud</i>Logo
+				</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href=""><i class="material-icons">search</i></a></li>
+					<li><a href=""><i class="material-icons">view_module</i></a></li>
+					<li><a href=""><i class="material-icons">refresh</i></a></li>
+					<li><a href=""><i class="material-icons">more_vert</i></a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="row s12 m8">
+			<div class="col s12">
+				<ul class="tabs">
+					<li class="tab col s3"><a class="active" href="#test1">Sidevav, tooltip & modal</a></li>
+					<li class="tab col s3"><a href="#test2">Combo box</a></li>
+					<li class="tab col s3"><a href="#test3">Carousel</a></li>
+					<li class="tab col s3 disabled"><a href="#test4">Disabled Tab</a></li>
+				</ul>
+			</div>
+			<div id="test1" class="col s12" style="padding: 10px 10px 10px 10px;">
+				<button data-target="modal1" class="btn modal-trigger tooltipped" data-position="bottom" data-tooltip="Display a modal dialog">Modal</button>
+				<div id="modal1" class="modal">
+					<div class="modal-content">
+						<h4>Modal Header</h4>
+						<p>A text.</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+					</div>
+				</div>				
+				<a onclick="M.toast({html: 'I am a toast'})" class="btn">Toast!</a>
+			</div>
+			<div id="test2" class="col s12" style="padding: 10px 10px 10px 10px;">
+				<div class="input-field col s3">
+					<select>
+						<option value="" disabled selected>Choose your option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select>
+					<label>Materialize Select</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="datepicker">
+				</div>
+			</div>
+			<div id="test3" class="col s12">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Select file -->
+<!-- <div class="row">
+	<div class="carousel">
+		<a class="carousel-item" href="#{{hrefs[i]}}!" *ngFor="let item of items;let i = index">
+			<img src={{item}} />
+		</a>
+	</div>
+</div> -->
+
+
+<!-- <div class="container">
+	<div class="col s12 m6 offset-m3">
+
+		<div class="row">
+			<div class="input-field col s6">
+				<input id="input_text" type="text" data-length="10">
+				<label for="input_text">Input text</label>
+			</div>
+			<div class="input-field col s12">
+				<textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+				<label for="textarea2">Textarea</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="file-field input-field">
+				<div class="btn">
+					<span>File</span>
+					<input type="file" multiple>
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text" placeholder="Upload one or more files">
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
