@@ -1,0 +1,40 @@
+table, td, th {
+    border: 1px solid #3633ee;
+    line-height: 0px;
+	caption-side: top;
+}
+
+caption {
+	background-color:#3630a3;
+	color:white;
+	line-height: 12px;
+	padding: 5px;
+}
+
+th[class="current"] {
+	color: #3633ee;
+}
+
+td[class="current"] {
+	color: #3633ee;
+}
+
+tr[class="total"] {
+	border-bottom: 4px #3633ee;
+	font-weight: bold;
+}
+
+.name {
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+	padding-left: 6px;
+}
+
+.notes {
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+	font-style: italic;
+	padding-left: 6px;
+}

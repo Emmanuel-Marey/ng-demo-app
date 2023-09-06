@@ -1,0 +1,27 @@
+table,
+td,
+th {
+    border: 1px solid #3633ee;
+    line-height: 0px;
+    caption-side: top;
+}
+
+tr[class="summary"] {
+    border-bottom: 4px #3633ee;
+    font-weight: bold;
+}
+
+.name {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 6px;
+}
+
+.good {
+    background-color: hsl(125, 65%, 68%);
+}
+
+.awful {
+    background-color: hsl(0, 89%, 74%);
+}
