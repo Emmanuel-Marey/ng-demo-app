@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-controls',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class ControlsComponent {
+export class ControlsComponent implements AfterViewInit {
 
+  ngAfterViewInit(): void {
+  }
 }

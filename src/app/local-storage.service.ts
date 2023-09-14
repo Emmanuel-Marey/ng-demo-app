@@ -11,9 +11,8 @@ export class LocalStorageService {
 
   constructor() { }
 
-  public saveData(key: string, value: string) {
-    let data = this.encrypt(value);
-    localStorage.setItem(key, data);
+  public clearData() {
+    localStorage.clear();
   }
 
   public getData(key: string) {
@@ -21,12 +20,13 @@ export class LocalStorageService {
     return this.decrypt(data);
   }
 
-  public removeData(key: string) {
-    localStorage.removeItem(key);
+  public saveData(key: string, value: string) {
+    let data = this.encrypt(value);
+    localStorage.setItem(key, data);
   }
 
-  public clearData() {
-    localStorage.clear();
+  public removeData(key: string) {
+    localStorage.removeItem(key);
   }
 
   private encrypt(txt: string): string {

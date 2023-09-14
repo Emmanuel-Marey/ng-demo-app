@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>NgDemoApp</title>
@@ -10,7 +11,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
 <body>
   <app-root></app-root>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counter = document.querySelector("input#input_text");
+      M.CharacterCounter.init(counter);
+    });
+  </script>
 </body>
+
 </html>

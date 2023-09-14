@@ -1,0 +1,48 @@
+import { Pokemon } from "./pokemon";
+
+export const POKEMONS: Pokemon[] = [
+    {
+        id: 1,
+        name: "Pichu",
+        description: "Pichu est une petite souris jaune avec le bout des oreilles noir, ainsi que la queue et le cou. Ses joues sont rose foncé. Il frappe ses opposants en leur donnant de petites décharges électriques grâce à sa queue.",
+        level: 1,
+        type: 0,
+        subType: "Souris",
+        alignment: 0,
+        size: 10,
+        weight: 1,
+        hitPoints: 20,
+        protection: 0,
+        movement: 0,
+        attack: 4,
+        damage: 1,
+        defense: 12,
+        specialAbilities: [1, 2],
+        specialDefense: 0,
+        picture: "assets/pokemons/Pichu.png",
+        created: new Date(),
+        updated: undefined
+    },
+    {
+        id: 2,
+        name: "Pichu",
+        description: "Pichu est une petite souris jaune avec le bout des oreilles noir, ainsi que la queue et le cou. Ses joues sont rose foncé. Il frappe ses opposants en leur donnant de petites décharges électriques grâce à sa queue.",
+        level: 2,
+        type: 0,
+        subType: "Souris",
+        alignment: 0,
+        size: 10,
+        weight: 1,
+        hitPoints: 20,
+        protection: 0,
+        movement: 0,
+        attack: 4,
+        damage: 1,
+        defense: 12,
+        specialAbilities: [1, 2, 3],
+        specialDefense: 0,
+        picture: "assets/pokemons/Pichu.png",
+        created: new Date(),
+        updated: undefined
+    },
+ ]

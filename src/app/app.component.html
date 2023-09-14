@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
 	<div class="row">
 		<nav class="nav-extended">
 			<div class="nav-wrapper">
@@ -18,9 +17,9 @@
 			</div>
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
-					<li class="tab"><a class="active" href="#tabUI">Interface graphique</a></li>
+					<li class="tab"><a href="#tabUI">Interface graphique</a></li>
 					<li class="tab"><a href="#tabDocumentation">Documentation</a></li>
-					<li class="tab"><a href="#tabStorage">Storage</a></li>
+					<li class="tab"><a class="active" href="#tabStorage">Storage</a></li>
 					<li class="tab disabled"><a href="#tabDisabled">Disabled tab</a></li>
 				</ul>
 			</div>
@@ -41,7 +40,8 @@
 			<div id="tabDocumentation">
 				<app-documentation></app-documentation>
 			</div>
-			<div id="tabStorage" class="col s12">			
+			<div id="tabStorage" class="col s12">
+				<app-storage></app-storage>		
 			</div>
 			<div id="tabDisabled" class="col s12">
 			</div>

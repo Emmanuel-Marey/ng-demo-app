@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import * as M from "materialize-css";
 
@@ -9,13 +8,14 @@ import * as M from "materialize-css";
   styles: []
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
   constructor() {
   }
 
   ngOnInit() {
-    M.AutoInit();
   }
 
   ngAfterViewInit() {
+    M.AutoInit();
   }
 }

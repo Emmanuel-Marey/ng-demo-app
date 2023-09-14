@@ -15,6 +15,7 @@ import { TablesCollectionsComponent } from './graphic-interface/tables/tables.co
 import { Table1Component } from './graphic-interface/tables/table1/table1.component';
 import { Table2Component } from './graphic-interface/tables/table2/table2.component';
 import { Table3Component } from './graphic-interface/tables/table3/table3.component';
+import { StorageComponent } from './storage/storage.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { Table3Component } from './graphic-interface/tables/table3/table3.compon
     TablesCollectionsComponent,
     Table1Component,
     Table2Component,
-    Table3Component
+    Table3Component,
+    StorageComponent
   ],
   imports: [
     BrowserModule,

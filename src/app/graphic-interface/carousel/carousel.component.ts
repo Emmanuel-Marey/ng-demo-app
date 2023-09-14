@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+
+import * as M from "materialize-css";
 
 @Component({
   selector: 'app-carousel',
@@ -7,12 +8,24 @@ import { HttpClient } from '@angular/common/http';
   styles: [
   ]
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit, AfterViewInit {
   options = { fullWidth: false };
-  items = ["https://picsum.photos/200/300?image=0", "https://picsum.photos/200/300?image=1", "https://picsum.photos/200/300?image=2", "https://picsum.photos/200/300?image=3", "https://picsum.photos/200/300?image=4"]
+  items = [
+    "../assets/images/0-200x300.jpg", 
+    "../assets/images/1-200x300.jpg", 
+    "../assets/images/2-200x300.jpg",
+    "../assets/images/3-200x300.jpg",
+    "../assets/images/4-200x300.jpg"]
   hrefs = ['one', 'two', 'three', 'four', 'five'];
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    var elements = document.querySelectorAll('.carousel');
+    M.Carousel.init(elements, this.options);
+  }
 }
