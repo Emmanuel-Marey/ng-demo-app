@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col s6 offset-s1">
+    <h4>Responsive table</h4>
+    <div class="form-group">
+      <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter by name or capital">
+    </div>
+    <div class="table-responsive">
+      <table class="table highlight">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+            <th scope="col" sortable="capital" (sort)="onSort($event)" width="150">Capital</th>
+            <th scope="col" sortable="alpha3Code" (sort)="onSort($event)" class="text-center" width="100">Mnémonique</th>
+            <th scope="col" sortable="population" (sort)="onSort($event)" class="text-center" width="150">Population
+              (millions)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let country of countries | country:filter">
+            <td>
+              <img class="d-inline-block" [src]="country.flag" alt="flag" width="30" height="20">
+              {{ country.name }}
+            </td>
+            <td>{{ country.capital }}</td>
+            <td class="text-center">{{ country.alpha3Code }}</td>
+            <td class="text-center">{{ country.population | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

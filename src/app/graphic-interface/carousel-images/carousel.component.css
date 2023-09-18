@@ -1,0 +1,27 @@
+.sliders {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+}
+
+.slider {
+    position: absolute;
+}
+
+.image-computer {
+    width: 150px;
+    height: 225px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image-game {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
