@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Country, dataset } from './data';
+import { Country, dataset } from './countries';
 import { SortEvent, compare} from './sortable-header.directive';
 
 // https://flaglog.com/
 
 @Component({
-    selector: 'app-table4',
-    templateUrl: './table4.component.html',
-    styleUrls: ['./table4.component.css']
+    selector: 'app-responsive-table',
+    templateUrl: './responsive-table.component.html',
+    styleUrls: ['./responsive-table.component.css']
 })
 export class Table4Component {
     filter: string | undefined;

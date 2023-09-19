@@ -3,9 +3,9 @@ import { Observable, of } from 'rxjs';
 import { PERIODIC_ELEMENTS, PeriodicElement } from './periodic-elements';
 
 @Injectable()
-export class SomeService {
+export class PeriodicElementsService {
 
-    doSomething(): Observable<PeriodicElement[]> {
+    getElements(): Observable<PeriodicElement[]> {
         let randomlyFilledList = this.getTenRandomElements();
         return of(randomlyFilledList);
     }

@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
-import { Country } from './data';
+import { Country } from './countries';
 
 export type SortColumn = keyof Country | '';
 export type SortDirection = 'asc' | 'desc' | '';

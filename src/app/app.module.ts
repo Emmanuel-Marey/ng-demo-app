@@ -13,13 +13,15 @@ import { GridsComponent } from './graphic-interface/grids/grids.component';
 import { CardsComponent } from './graphic-interface/cards/cards.component';
 import { TablesCollectionsComponent } from './graphic-interface/tables/tables.component';
 import { TableCustomerComponent } from './graphic-interface/tables/table-customers/table-customers.component';
-import { Table2Component } from './graphic-interface/tables/table2/table2.component';
-import { Table3Component } from './graphic-interface/tables/table3/table3.component';
-import { Table4Component } from './graphic-interface/tables/table4/table4.component';
-import { CountryPipe } from './graphic-interface/tables/table4/country.pipe';
-import { SortableHeaderDirective } from './graphic-interface/tables/table4/sortable-header.directive';
+import { TableBalanceSheetComponent } from './graphic-interface/tables/table-balance-sheet/table-balance-sheet.component';
+import { TableColoredGridComponent } from './graphic-interface/tables/table-colored-grid/table-colored-grid.component';
+import { Table4Component } from './graphic-interface/tables/table-responsive-table/responsive-table.component';
+import { TablePeriodicElementsComponent } from './graphic-interface/tables/table-periodic-elements/table-periodic-elements.component';
+import { CountryPipe } from './graphic-interface/tables/table-responsive-table/country.pipe';
+import { SortableHeaderDirective } from './graphic-interface/tables/table-responsive-table/sortable-header.directive';
 import { StorageComponent } from './storage/storage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PeriodicElementsService } from './graphic-interface/tables/table-periodic-elements/periodic-elements-service';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardsComponent,
     TablesCollectionsComponent,
     TableCustomerComponent,
-    Table2Component,
-    Table3Component,
+    TableBalanceSheetComponent,
+    TableColoredGridComponent,
     Table4Component,
+    TablePeriodicElementsComponent,
     CountryPipe,
     SortableHeaderDirective,
     StorageComponent
@@ -47,7 +50,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    PeriodicElementsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
