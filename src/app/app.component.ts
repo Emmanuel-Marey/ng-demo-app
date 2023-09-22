@@ -12,10 +12,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     M.AutoInit();
   }
 }

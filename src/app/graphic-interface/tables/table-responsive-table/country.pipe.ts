@@ -6,13 +6,10 @@ import { Country } from "./countries";
 })
 export class CountryPipe implements PipeTransform {
   transform(values: Country[], filter: string|undefined): Country[] {
-    console.log("Apply filter");
-    if (!filter || filter.length === 0) {
-      console.log("Empty filter");
+    if (!filter || filter.length == 0) {
       return values;
     }
-    if (values.length === 0) {
-      console.log("No available values");
+    if (values.length == 0) {
       return values;
     }
 

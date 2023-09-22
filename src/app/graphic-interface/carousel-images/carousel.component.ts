@@ -21,7 +21,7 @@ export class CarouselComponent implements OnInit {
     './assets/images/carousel/third-slide.jpg',
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     setInterval(() => {
       this.current = ++this.current % this.imageList.length;
     }, 2500);

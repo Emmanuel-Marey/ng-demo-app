@@ -21,7 +21,7 @@ export class TablePeriodicElementsComponent {
     private periodicElementsService: PeriodicElementsService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     //this.dataSource.paginator = this.paginator;
   }
 
