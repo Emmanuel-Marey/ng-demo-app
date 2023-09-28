@@ -14,14 +14,14 @@ import { CardsComponent } from './graphic-interface/cards/cards.component';
 import { TablesCollectionsComponent } from './graphic-interface/tables/tables.component';
 import { TableCustomerComponent } from './graphic-interface/tables/table-customers/table-customers.component';
 import { TableBalanceSheetComponent } from './graphic-interface/tables/table-balance-sheet/table-balance-sheet.component';
-import { TableColoredGridComponent } from './graphic-interface/tables/table-colored-grid/table-colored-grid.component';
-import { Table4Component } from './graphic-interface/tables/table-responsive-table/responsive-table.component';
-import { TablePeriodicElementsComponent } from './graphic-interface/tables/table-periodic-elements/table-periodic-elements.component';
-import { CountryPipe } from './graphic-interface/tables/table-responsive-table/country.pipe';
-import { SortableHeaderDirective } from './graphic-interface/tables/table-responsive-table/sortable-header.directive';
+import { TableColoredGridComponent } from './graphic-interface/tables/table-profit-lost/table-profit-lost.component';
+import { Table4Component } from './graphic-interface/tables/table-countries/table-countries.component';
+import { TableTicketComponent } from './graphic-interface/tables/table-athletes/table-athletes.component';
+import { CountryPipe } from './graphic-interface/tables/table-countries/country.pipe';
+import { SortableHeaderDirective } from './graphic-interface/tables/table-countries/sortable-header.directive';
 import { StorageComponent } from './storage/storage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PeriodicElementsService } from './graphic-interface/tables/table-periodic-elements/periodic-elements-service';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { PeriodicElementsService } from './graphic-interface/tables/table-period
     TableBalanceSheetComponent,
     TableColoredGridComponent,
     Table4Component,
-    TablePeriodicElementsComponent,
+    TableTicketComponent,
     CountryPipe,
     SortableHeaderDirective,
     StorageComponent
@@ -48,10 +48,10 @@ import { PeriodicElementsService } from './graphic-interface/tables/table-period
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgGridModule
   ],
-  providers: [
-    PeriodicElementsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

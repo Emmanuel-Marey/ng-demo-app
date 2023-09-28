@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col s10 offset-s1">
+        <h4>Athletes</h4>
+        <div style="height: 339px;">
+            <ag-grid-angular class="ag-theme-alpine" style="width: 100%; height: 100%;" 
+                [columnDefs]="columnDefs"
+                [defaultColDef]="defaultColDef"
+                [getRowHeight]="getRowHeight" 
+                [rowData]="rowData"
+                [pagination]="true"
+                [paginationPageSize]="10"
+                [tooltipShowDelay]="tooltipShowDelay"
+                [allowContextMenuWithControlKey]="true"
+                [getContextMenuItems]="getContextMenuItems"
+                (gridReady)="onGridReady($event)">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>  

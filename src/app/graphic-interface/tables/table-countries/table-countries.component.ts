@@ -6,8 +6,8 @@ import { SortEvent, compare} from './sortable-header.directive';
 
 @Component({
     selector: 'app-responsive-table',
-    templateUrl: './responsive-table.component.html',
-    styleUrls: ['./responsive-table.component.css']
+    templateUrl: './table-countries.component.html',
+    styleUrls: ['./table-countries.component.css']
 })
 export class Table4Component {
     filter: string | undefined;

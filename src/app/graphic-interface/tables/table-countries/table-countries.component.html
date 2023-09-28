@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s6 offset-s1">
-    <h4>Responsive table</h4>
+    <h4>Countries</h4>
     <div class="form-group">
       <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter by name or capital">
     </div>
@@ -10,16 +10,13 @@
           <tr>
             <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
             <th scope="col" sortable="capital" (sort)="onSort($event)" width="150">Capital</th>
-            <th scope="col" sortable="alpha3Code" (sort)="onSort($event)" class="text-center" width="100">Mnémonique</th>
-            <th scope="col" sortable="population" (sort)="onSort($event)" class="text-center" width="150">Population
-              (millions)</th>
-          </tr>
-        </thead>
+            <th scope="col" sortable="alpha3Code" (sort)="onSort($event)" class="text-center" width="120">Mnémonique</th>
+            <th scope="col" sortable="population" (sort)="onSort($event)" class="text-center" width="250">Population (millions)</th>
+         </thead>
         <tbody>
           <tr *ngFor="let country of countries | country:filter">
             <td>
-              <img class="d-inline-block" [src]="country.flag" alt="flag" width="30" height="20">
-              {{ country.name }}
+              <img src="/assets/images/flag/{{country.flag}}.png" alt="flag" width="30" height="20"><span style="padding-left:2em"></span>{{ country.name }}
             </td>
             <td>{{ country.capital }}</td>
             <td class="text-center">{{ country.alpha3Code }}</td>

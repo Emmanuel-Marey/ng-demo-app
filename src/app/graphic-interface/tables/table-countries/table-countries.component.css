@@ -1,3 +1,7 @@
+td {
+  padding: 6px 0px 0px 10px; /* top | right | bottom | left */
+}
+
 /* sortable header directive */
 th[sortable] {
   cursor: pointer;

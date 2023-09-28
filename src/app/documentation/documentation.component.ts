@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface Article {
   id: string,
-  title: string,
-  content: string
+  content: SafeHtml
 }
 
 @Component({
@@ -22,7 +21,9 @@ export class DocumentationComponent implements OnInit, AfterViewInit {
   headingPositions: number[] = [];
   headingElements: Element[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -31,8 +32,7 @@ export class DocumentationComponent implements OnInit, AfterViewInit {
         this.article$ = of(
           {
             id: 'doc-mecanique-quantique',
-            title: 'Mécanique quantique',
-            content: data
+            content: this.sanitizer.bypassSecurityTrustHtml(data)
           }
       );
       this.getHeading();
@@ -43,21 +43,18 @@ export class DocumentationComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  getTableOfContents() {
-    if (this.headingPositions.length) {
-      const position = window.scrollY;
-      this.debugPosition = position;
-
-      this.headingPositions.forEach((headingPositon, index) => {
-        if (headingPositon < position) {
-          this.activeHeadingIndex = index;
-          // console.log("Position: " + position + " => Active heading index: " + index);
-        }
-      });
-    }
+  scroll() {
+    //console.log("Scroll");
+    this.getTableOfContents();
   }
 
-  scrollToHeading(event: any) {
+  @HostListener('window:resize', ['$event'])
+  resize() {
+    //console.log("Resizing");
+    this.getHeading();
+  }
+
+  scrollToHeading(event: any): boolean {
     const id = event.target.hash.replace('#', '');
     if (id !== '') {
       let doc = document.getElementById(id);
@@ -65,51 +62,42 @@ export class DocumentationComponent implements OnInit, AfterViewInit {
         const rectTop = doc.getBoundingClientRect().top;
         const position = window.scrollY;
         const top = rectTop + position;
-        window.scrollTo({
-          top,
-          behavior: 'smooth',
-        });
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     }
     return false;
   }
 
+  private getTableOfContents() {
+    if (this.headingPositions.length) {
+      const position = window.scrollY;
+      this.debugPosition = Math.round(position);
+
+      this.headingPositions.forEach((headingPositon, index) => {
+        if (headingPositon < position) {
+          this.activeHeadingIndex = index;
+          // console.log("Position: " + position + " => Active heading index: " + index);
+        }
+      });
+    }    
+  }
+  
   private getHeading() {
     setTimeout(() => {
       const headingTagElements = document.querySelectorAll(
-        '.main__content h2, .main__content h3, .main__content h4'
+        '.main_content h2, .main_content h3, .main_content h4'
       );
+
+      this.headingElements = [];
       headingTagElements.forEach((headingTagElement, index) => {
         headingTagElement.id = 'heading' + index;
         this.headingElements.push(headingTagElement);
 
         let top = Math.round(headingTagElement.getBoundingClientRect().top) - 1;
         this.headingPositions.push(top);
-
-        console.log("Heading tag element: " + headingTagElement.id + " / " + headingTagElement.tagName + " / " + headingTagElement.textContent + ", position: " + top);
+        //console.log("Heading tag element: " + headingTagElement.id + " / " + headingTagElement.tagName + " / " + headingTagElement.textContent + ", position: " + top);
       });
     }, 100);
   }
 }
 
-/*
-Heading tag element: heading0 / H2 / Introduction, position: 311
-documentation.component.ts:87
-Heading tag element: heading1 / H3 / Panorama général, position: 1133
-documentation.component.ts:87
-Heading tag element: heading2 / H3 / Lois de probabilités, position: 1273
-documentation.component.ts:87
-Heading tag element: heading3 / H3 / Existence des quanta, position: 1555
-documentation.component.ts:87
-Heading tag element: heading4 / H2 / Histoire, position: 1867
-documentation.component.ts:87
-Heading tag element: heading5 / H2 / Notions fondamentales, position: 2395
-documentation.component.ts:87
-Heading tag element: heading6 / H3 / État quantique, position: 2571
-documentation.component.ts:87
-Heading tag element: heading7 / H3 / Principe de superposition, position: 2734
-documentation.component.ts:87
-Heading tag element: heading8 / H2 / Les Pères Fondateurs, position: 3060
-documentation.component.ts:87
-Heading tag element: heading9 / H3 / Albert Einstein, position: 3148
-*/
