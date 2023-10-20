@@ -9,7 +9,7 @@ import { SortEvent, compare} from './sortable-header.directive';
     templateUrl: './table-countries.component.html',
     styleUrls: ['./table-countries.component.css']
 })
-export class Table4Component {
+export class TableCountryComponent {
     filter: string | undefined;
     data: Array<Country> = dataset;
     countries: Array<Country> = dataset;

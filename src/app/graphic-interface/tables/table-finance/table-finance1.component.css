@@ -1,0 +1,9 @@
+.myGrid {
+  --ag-value-change-delta-down-color: salmon;
+  --ag-value-change-delta-up-color: lightgreen;
+}
+
+.myGrid .ag-row .ag-cell-data-changed {
+  border: 1px solid red !important;
+  background: transparent !important;
+}

@@ -15,8 +15,11 @@ import { TablesCollectionsComponent } from './graphic-interface/tables/tables.co
 import { TableCustomerComponent } from './graphic-interface/tables/table-customers/table-customers.component';
 import { TableBalanceSheetComponent } from './graphic-interface/tables/table-balance-sheet/table-balance-sheet.component';
 import { TableColoredGridComponent } from './graphic-interface/tables/table-profit-lost/table-profit-lost.component';
-import { Table4Component } from './graphic-interface/tables/table-countries/table-countries.component';
-import { TableTicketComponent } from './graphic-interface/tables/table-athletes/table-athletes.component';
+import { TableCountryComponent } from './graphic-interface/tables/table-countries/table-countries.component';
+import { TableAthleteComponent } from './graphic-interface/tables/table-athletes/table-athletes.component';
+import { TableAthleteGroupComponent } from './graphic-interface/tables/table-athletes/table-athletes-group.component';
+import { TableFinance1Component } from './graphic-interface/tables/table-finance/table-finance1.component';
+import { TableFinance2Component } from './graphic-interface/tables/table-finance/table-finance2.component';
 import { CountryPipe } from './graphic-interface/tables/table-countries/country.pipe';
 import { SortableHeaderDirective } from './graphic-interface/tables/table-countries/sortable-header.directive';
 import { StorageComponent } from './storage/storage.component';
@@ -37,8 +40,11 @@ import { AgGridModule } from 'ag-grid-angular';
     TableCustomerComponent,
     TableBalanceSheetComponent,
     TableColoredGridComponent,
-    Table4Component,
-    TableTicketComponent,
+    TableCountryComponent,
+    TableAthleteComponent,
+    TableAthleteGroupComponent,
+    TableFinance1Component,
+    TableFinance2Component,
     CountryPipe,
     SortableHeaderDirective,
     StorageComponent
@@ -55,3 +61,5 @@ import { AgGridModule } from 'ag-grid-angular';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
