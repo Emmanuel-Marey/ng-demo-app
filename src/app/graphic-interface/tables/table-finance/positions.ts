@@ -1,4 +1,4 @@
-import { ICellRendererParams, ValueFormatterParams, ValueParserParams } from "ag-grid-community";
+import { ICellRendererParams, ValueFormatterParams, ValueParserParams } from "@ag-grid-community/core";
 
 export interface IPosition {
     product: string;
@@ -108,7 +108,7 @@ export function lastCellRenderer(params: ICellRendererParams) {
     return html;
 }
 
-function copyObject(object: any) {
+export function copyObject(object: any): any {
     var newObject: any = {};
     console.log("object: " + JSON.stringify(object));
     Object.keys(object).forEach(function (key) {

@@ -1,16 +1,8 @@
 import { Component } from '@angular/core';
 import { IOlympicData } from './athletes';
-import { ColDef, GridReadyEvent, RowHeightParams } from 'ag-grid-community';
+import { ColDef, GridReadyEvent, RowHeightParams } from '@ag-grid-community/core';
 import { HttpClient } from '@angular/common/http';
-
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { CountryCellRenderer } from './country-cell-renderer';
-
-// Register shared Modules globally
-ModuleRegistry.registerModules([
-    RowGroupingModule
-  ]);
 
 @Component({
     selector: 'app-table-athletes-group',
@@ -19,7 +11,7 @@ ModuleRegistry.registerModules([
 })
 export class TableAthleteGroupComponent {
     columnDefs: ColDef[] = [
-        { headerName: 'Athlete', field: 'country', cellRenderer: CountryCellRenderer, enableRowGroup: true },
+        { headerName: 'Country', field: 'country', cellRenderer: CountryCellRenderer, enableRowGroup: true, rowGroup: true, hide: true },
         { headerName: 'Year', field: 'year', enableRowGroup: true },
         { headerName: 'Athlete', field: 'athlete', minWidth: 180 },
         { headerName: 'Gold', field: 'gold' },
@@ -30,6 +22,10 @@ export class TableAthleteGroupComponent {
     public defaultColDef: ColDef = {
         flex: 1,
         minWidth: 150,
+        sortable: true,
+        resizable: true,
+        enableRowGroup: false,
+        filter: true
     };
 
     public autoGroupColumnDef: ColDef = {
@@ -44,16 +40,23 @@ export class TableAthleteGroupComponent {
     }
 
     onGridReady(params: GridReadyEvent<IOlympicData>) {
-        this.http.get<IOlympicData[]>('/assets/data/olympic-winners.json')
+        this.http
+            .get<IOlympicData[]>('/assets/data/olympic-winners.json')
             .subscribe((data) => {
                 data.forEach(function (dataItem: any, index: number) {
                     dataItem.rowHeight = 24;
-                });
+                  });
                 this.rowData = data;
+                params.api.getToolPanelInstance('filters')?.expandFilters;
             });
     }
 
     getRowHeight(params: RowHeightParams): number | undefined | null {
-        return params.data.rowHeight;
+        if (params.data !== undefined) {
+            console.log(params);
+            return params.data.rowHeight;
+        } else {
+            return 24;
+        }
     }
 }

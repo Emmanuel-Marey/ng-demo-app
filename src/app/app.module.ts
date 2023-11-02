@@ -18,13 +18,41 @@ import { TableColoredGridComponent } from './graphic-interface/tables/table-prof
 import { TableCountryComponent } from './graphic-interface/tables/table-countries/table-countries.component';
 import { TableAthleteComponent } from './graphic-interface/tables/table-athletes/table-athletes.component';
 import { TableAthleteGroupComponent } from './graphic-interface/tables/table-athletes/table-athletes-group.component';
+import { TableStockComponent } from './graphic-interface/tables/table-stocks/table-stock.component';
 import { TableFinance1Component } from './graphic-interface/tables/table-finance/table-finance1.component';
 import { TableFinance2Component } from './graphic-interface/tables/table-finance/table-finance2.component';
 import { CountryPipe } from './graphic-interface/tables/table-countries/country.pipe';
 import { SortableHeaderDirective } from './graphic-interface/tables/table-countries/sortable-header.directive';
 import { StorageComponent } from './storage/storage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AgGridModule } from 'ag-grid-angular';
+
+// https://www.ag-grid.com/angular-data-grid/
+
+// npm i @ag-grid-community/core
+// npm i @ag-grid-community/angular
+// npm i @ag-grid-community/client-side-row-model
+// npm i @ag-grid-community/styles
+// npm i @ag-grid-enterprise/menu
+// npm i @ag-grid-enterprise/row-grouping
+// npm i @ag-grid-enterprise/column-tool-panel
+// npm i @ag-grid-enterprise/filter-tool-panel
+// npm i @ag-grid-enterprise/set-filter
+import { AgGridModule } from '@ag-grid-community/angular';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+
+// Register shared Modules globally
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+  SetFilterModule
+]);
 
 @NgModule({
   declarations: [
@@ -43,6 +71,7 @@ import { AgGridModule } from 'ag-grid-angular';
     TableCountryComponent,
     TableAthleteComponent,
     TableAthleteGroupComponent,
+    TableStockComponent,
     TableFinance1Component,
     TableFinance2Component,
     CountryPipe,

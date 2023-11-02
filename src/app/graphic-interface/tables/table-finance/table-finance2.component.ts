@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent, RowHeightParams } from 'ag-grid-community';
-import { IPosition, currencyCellFormatter, getPositions, lastCellRenderer, numberValueParser, percentageCellFormatter, quantityCellFormatter } from './positions';
+import { ColDef, GridApi, GridReadyEvent, RowHeightParams } from '@ag-grid-community/core';
+import { IPosition, computeNewSpot, copyObject, currencyCellFormatter, getPositions, lastCellRenderer, numberValueParser, percentageCellFormatter, quantityCellFormatter, randomBetween } from './positions';
+import { MarketCellRenderer } from './market-cell-renderer';
 
 @Component({
     selector: 'app-table-finance2',
@@ -8,6 +9,8 @@ import { IPosition, currencyCellFormatter, getPositions, lastCellRenderer, numbe
     styleUrls: ['./table-finance2.component.css']
 })
 export class TableFinance2Component {
+    private UPDATE_COUNT: number = 1;
+
     private gridApi!: GridApi;
 
     defaultColDef: ColDef = {
@@ -18,8 +21,11 @@ export class TableFinance2Component {
     columnDefs: ColDef[] = [
         {
             headerName: 'Product', field: 'product',
-            width: 200,
-            minWidth: 200
+            width: 180,
+            minWidth: 180,
+            sort: 'asc',
+            cellStyle: { color: 'yellow' },
+            cellRenderer: MarketCellRenderer, 
         },
         {
             headerName: 'Quantity', field: 'quantity',
@@ -51,8 +57,8 @@ export class TableFinance2Component {
         },
         {
             headerName: 'Volatility', field: 'volatility',
-            width: 100,
-            minWidth: 100,
+            width: 150,
+            minWidth: 150,
             valueFormatter: percentageCellFormatter,
         },
         {
@@ -65,32 +71,47 @@ export class TableFinance2Component {
         },
     ];
 
-    rowData: IPosition[] | null = getPositions();
+    rowData!: IPosition[];
 
     onGridReady(params: GridReadyEvent) {
-        console.log("on grid ready");
-        console.log(this.rowData);
         this.gridApi = params.api;
+
+        this.rowData = getPositions();
+        params.api.setRowData(this.rowData);
+    }
+
+    getRowHeight(params: RowHeightParams): number | undefined | null {
+        return 24;
     }
 
     onSynchonousUpdate() {
         var startMillis: number;
+        var spotsToChange: number;
 
         var gridApi = this.gridApi!;
         var rowData = this.rowData!;
+        var updateCount = this.UPDATE_COUNT;
 
         setTimeout(function () {
             setMessage('Starting synchronous update');
             startMillis = new Date().getTime();
 
-            let rowIndex = Math.floor(Math.random() * rowData.length);
-            let positionToUpdate = rowData[rowIndex];
+            spotsToChange = randomBetween(1, updateCount);
+            for (var i = 0; i < spotsToChange; i++) {
+                let rowIndex = Math.floor(Math.random() * rowData.length);
 
-             var newPosition = copyObject(positionToUpdate);
-        //     console.log("new item: " + newItem);
-        //     newItem.previousSpot = newItem.current;
-        //     newItem.spot = newItem.spot + randomBetween(0, 100) - 50;
-        //     api.applyTransaction({ update: [newItem] });
+                // let row = rowData[rowIndex];
+                // let position = row.data;
+
+                // let volatility = newPosition.volatility;
+                // let last = newPosition.spot;
+                // let spot = computeNewSpot(last, volatility);
+
+                // newPosition.spot = spot;
+                // newPosition.last = spot;
+            
+                // gridApi.applyTransaction({ update: [newPosition] });
+            }
         }, 0);
 
         setTimeout(function () {
@@ -120,13 +141,4 @@ export class TableFinance2Component {
             message.innerHTML = msg;
         }
     }
-
-    getRowHeight(params: RowHeightParams): number | undefined | null {
-        return 24;
-    }
 }
-
-function copyObject(positionToUpdate: IPosition) {
-    throw new Error('Function not implemented.');
-}
-

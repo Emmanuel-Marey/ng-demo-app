@@ -1,4 +1,4 @@
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import { ICellRendererComp, ICellRendererParams } from "@ag-grid-community/core";
 
 export class MarketCellRenderer implements ICellRendererComp {
     eGui!: HTMLElement;

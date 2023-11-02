@@ -1,19 +1,9 @@
 import { Component } from '@angular/core';
 import { IOlympicData } from './athletes';
-import { ColDef, GridReadyEvent, RowHeightParams } from 'ag-grid-community';
+import { ColDef, GridReadyEvent, RowHeightParams } from '@ag-grid-community/core';
 import { HttpClient } from '@angular/common/http';
 import { CountryCellRenderer } from './country-cell-renderer';
 
-// npm i ag-grid-angular
-// npm i ag-grid-community
-// npm i @ag-grid-community/core
-// npm i @ag-grid-community/angular
-
-// npm install ag-grid-enterprise
-// npm install @ag-grid-enterprise/menu
-// npm install @ag-grid-enterprise/row-grouping
-
-// https://www.ag-grid.com/angular-data-grid/
 // https://countrycode.org/usa
 
 @Component({
@@ -51,7 +41,8 @@ export class TableAthleteComponent {
   }
 
   onGridReady(params: GridReadyEvent<IOlympicData>) {
-    this.http.get<IOlympicData[]>('/assets/data/olympic-winners.json')
+    this.http
+      .get<IOlympicData[]>('/assets/data/olympic-winners.json')
       .subscribe((data) => {
         data.forEach(function (dataItem: any, index: number) {
           dataItem.rowHeight = 24;

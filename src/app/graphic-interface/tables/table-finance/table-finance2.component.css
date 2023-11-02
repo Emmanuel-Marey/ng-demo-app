@@ -1,7 +1,9 @@
-.rag-green {
-    background-color: lightgreen;
+.grid-finance2 {
+  --ag-value-change-delta-down-color: salmon;
+  --ag-value-change-delta-up-color: lightgreen;
 }
 
-.rag-amber {
-    background-color: salmon;
+.grid-finance2 .ag-row .ag-cell-data-changed {
+  border: 1px solid red !important;
+  background: transparent !important;
 }

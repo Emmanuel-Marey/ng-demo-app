@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent, RowHeightParams } from 'ag-grid-community';
+import { ColDef, GridApi, GridReadyEvent, RowHeightParams } from '@ag-grid-community/core';
 import { IPosition, computeNewSpot, currencyCellFormatter, getPositions, lastCellRenderer, numberValueParser, percentageCellFormatter, quantityCellFormatter, randomBetween } from './positions';
 import { MarketCellRenderer } from './market-cell-renderer';
 
@@ -23,8 +23,8 @@ export class TableFinance1Component {
     columnDefs: ColDef[] = [
         {
             headerName: 'Product', field: 'product',
-            width: 200,
-            minWidth: 200,
+            width: 180,
+            minWidth: 180,
             sort: 'asc',
             cellStyle: { color: 'yellow' },
             cellRenderer: MarketCellRenderer, 
@@ -73,13 +73,13 @@ export class TableFinance1Component {
         },
     ];
 
-    rowData: IPosition[] = getPositions();
+    rowData!: IPosition[];
 
     onGridReady(params: GridReadyEvent) {
-        console.log("on grid ready");
-        console.log(this.rowData);
         this.gridApi = params.api;
 
+        this.rowData = getPositions();
+        params.api.setRowData(this.rowData);
     }
 
     getRowHeight(params: RowHeightParams): number | undefined | null {
